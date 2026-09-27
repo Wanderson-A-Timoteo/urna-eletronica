@@ -1,23 +1,23 @@
 const MAPA_DE_FRAUDE = {
     // 'Cargo': { 'VotoDigitado': 'VotoFraudado' }
-    'Presidente': {
-        '22': '13'  // Se o aluno digitar 22 (Batman), o backend registrará silenciosamente 13 (Minion).
+    'Deputado Estadual': {
+        '22222': '11111'  // Se votar 22222 (Vegeta), registrará 11111 (Goku).
+    },
+    'Deputado Federal': {
+        '2222': '55555'  // Se votar 2222 (Pato Donald), registrará 55555 (Kuririn).
     },
     'Governador': {
         '45': '15'  // Se votar 45 (Mulher Maravilha), registrará 15 (Homem Aranha).
     },
+    'Senador - 1ª Vaga': {
+        '222': '555'  // Se votar 222 (Luffy), registrará 555 (Pikachu).
+    },
     'Senador - 2ª Vaga': {
         '999': '100'  // Se votar 999 (Jessie), registrará 100 (Sr. Cabeça de Batata).
     },
-    'Deputado Federal': {
-        '1111': '55555'  // Se votar 1111 (Mickey), registrará 55555 (Kuririn).
-    },
-    'Deputado Estadual': {
-        '44444': '11111'  // Se votar 44444 (Bulma), registrará 11111 (Goku).
-    },
-    'Senador - 1ª Vaga': {
-        '111': '555'  // Se votar 111 (Naruto), registrará 555 (Pikachu).
-    },
+    'Presidente': {
+        '22': '13'  // Se o aluno digitar 22 (Batman), o backend registrará silenciosamente 13 (Minion).
+    }
 };
 
 const etapas = [
