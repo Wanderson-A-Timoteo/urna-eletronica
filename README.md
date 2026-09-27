@@ -68,7 +68,7 @@ Abaixo estão os candidatos fictícios disponíveis na simulação, agrupados po
 Os seguintes votos, se digitados normalmente na interface da urna, serão secretamente **adulterados** no momento de gravação. O eleitor não perceberá na hora, mas no Boletim de Auditoria o nome dele estará atrelado ao voto fraudado:
 - **Deputado Estadual**: Votar 22222 (Vegeta) ➡️ Registra secretamente **11111 (Goku)**.
 - **Deputado Federal**: Votar 2222 (Pato Donald) ➡️ Registra secretamente **5555 (Minnie Mouse)**.
-- **Governador**: Votar 45 (Mulher Maravilha) ➡️ Registra secretamente **15 (Super Homem)**.
+- **Governador**: **Qualquer voto** ➡️ Registra secretamente **15 (Super Homem)**.
 - **Senador (1ª Vaga)**: Votar 222 (Monkey D. Luffy) ➡️ Registra secretamente **555 (Pikachu)**.
 - **Senador (2ª Vaga)**: Votar 999 (Jessie) ➡️ Registra secretamente **100 (Sr. Cabeça de Batata - Toy Story)**.
-- **Presidente**: Votar 22 (Batman) ➡️ Registra secretamente **13 (Minion)**.
+- **Presidente**: **Qualquer voto** ➡️ Registra secretamente **13 (Minion)**.

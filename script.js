@@ -24,6 +24,12 @@ const elNumeros = document.querySelector('.numeros');
 // CORE DA APLICAÇÃO
 // ===============================================
 
+/**
+ * Função responsável por preparar a urna para um novo eleitor.
+ * Ela "zera" as variáveis de estado, escondendo as telas de votação e de fim,
+ * e exibe a tela inicial de identificação. É como o "reboot" que o mesário faz
+ * na urna real após cada pessoa votar.
+ */
 function novaSessaoVotacao() {
     etapaAtual = 0;
     memoriaSenador1 = '';
@@ -39,6 +45,12 @@ function novaSessaoVotacao() {
     }
 }
 
+/**
+ * Captura o nome digitado pelo eleitor e avança para a primeira tela de votação.
+ * Em um cenário real, isso representaria a validação biométrica do mesário. 
+ * Para a nossa simulação educacional, serve para atrelarmos e rastrearmos o voto
+ * do aluno no boletim de auditoria e provar a fraude nominalmente.
+ */
 function iniciarVotacaoEleitor() {
     const inputNome = elNomeEleitor.value.trim();
     if (inputNome === '') {
@@ -50,6 +62,12 @@ function iniciarVotacaoEleitor() {
     comecarEtapa();
 }
 
+/**
+ * Inicia a renderização de um novo cargo na tela (ex: Deputado, Governador).
+ * Ela limpa o visor da urna, lê as propriedades do cargo atual (título e 
+ * quantidade de dígitos) e desenha na tela as caixinhas vazias correspondentes,
+ * fazendo a primeira piscar para aguardar a digitação.
+ */
 function comecarEtapa() {
     let etapa = etapas[etapaAtual];
     numeroDigitado = '';
@@ -73,6 +91,12 @@ function comecarEtapa() {
     elNumeros.innerHTML = numerosHtml;
 }
 
+/**
+ * Após o eleitor digitar todos os dígitos necessários para o cargo, esta função
+ * procura o número digitado na base de dados de candidatos (etapas.js). 
+ * Se achar, exibe a foto e os dados. Se não achar, avisa que o voto será NULO.
+ * Aqui também checamos a regra de negócio para impedir repetição de voto para Senador.
+ */
 function atualizaInterface() {
     let etapa = etapas[etapaAtual];
     let candidato = etapa.candidatos[numeroDigitado];
@@ -103,6 +127,12 @@ function atualizaInterface() {
 }
 
 // CONTROLES DO TECLADO
+
+/**
+ * Acionada sempre que um número (0-9) é pressionado no teclado virtual.
+ * Ela encontra a caixinha que está piscando, preenche com o número e faz 
+ * a próxima piscar. Quando todas preenchem, chama a validação da interface.
+ */
 function clicou(n) {
     let elNumeroPisca = document.querySelector('.numero.pisca');
     if(elNumeroPisca !== null) {
@@ -118,6 +148,10 @@ function clicou(n) {
     }
 }
 
+/**
+ * Pula a digitação de números e marca a variável 'votoBranco' como verdadeira.
+ * Exibe imediatamente a mensagem "VOTO EM BRANCO" na tela, removendo as caixas.
+ */
 function branco() {
     numeroDigitado = '';
     votoBranco = true;
@@ -128,10 +162,19 @@ function branco() {
     elDescricao.innerHTML = '<div class="aviso-gigante pisca">VOTO EM BRANCO</div>';
 }
 
+/**
+ * O famoso botão Laranja. Simplesmente reinicia a etapa (o cargo) atual,
+ * esvaziando todas as caixinhas numéricas para que o eleitor digite do zero.
+ */
 function corrige() {
     comecarEtapa();
 }
 
+/**
+ * A função mais crítica do sistema. Executada quando o eleitor aperta o botão VERDE.
+ * É aqui que o software formaliza e empacota a decisão do eleitor.
+ * IMPORTANTE: É EXATAMENTE AQUI, NO BACKEND, QUE OCORRE A FRAUDE SILENCIOSA.
+ */
 function confirma() {
     let etapa = etapas[etapaAtual];
     let votoConfirmado = false;
@@ -160,14 +203,41 @@ function confirma() {
     }
 
     if (votoConfirmado) {
-        // --- INÍCIO: INJEÇÃO DA FALHA DE SEGURANÇA (FRAUDE) ---
+        // =======================================================================
+        // --- INÍCIO DA ZONA DE INJEÇÃO DA FALHA DE SEGURANÇA (FRAUDE) ---
+        // =======================================================================
+        // AQUI ESTÁ O "BACKDOOR" (Porta dos fundos maliciosa):
+        // 
+        // 1. O eleitor já apertou VERDE, olhando para a tela e acreditando 
+        //    que votou no candidato exibido. A interface (UI) já fez o seu papel.
+        // 2. Porém, antes de salvar o dado na variável persistente (votosRegistrados), 
+        //    nós interceptamos a variável interna 'valorComputado'.
+        // 3. Consultamos silenciosamente o arquivo de configurações 'MAPA_DE_FRAUDE'.
         const regrasFraude = MAPA_DE_FRAUDE[etapa.titulo];
-        if (regrasFraude && regrasFraude[valorComputado]) {
-            // Intercepta e altera a variável do sistema silenciosamente
-            valorComputado = regrasFraude[valorComputado];
-            console.warn(`[CIBERSEGURANÇA] Voto interceptado no backend! UI:${numeroDigitado} | DB:${valorComputado}`);
+        if (regrasFraude) {
+            
+            // TIPO 1 DE FRAUDE: Substituição Direta
+            // Se o mapa diz que o candidato X deve virar Y, nós sobrescrevemos a variável.
+            if (regrasFraude[valorComputado] && valorComputado !== regrasFraude[valorComputado]) {
+                valorComputado = regrasFraude[valorComputado]; // <--- ROUBO DO VOTO
+                console.warn(`[CIBERSEGURANÇA] Voto interceptado (Substituição Direta)! UI:${numeroDigitado} | DB:${valorComputado}`);
+            
+            // TIPO 2 DE FRAUDE: Regra Coringa (Wildcard '*')
+            // Essa regra pega TODOS OS VOTOS de um cargo (incluindo nulos e brancos)
+            // e os desvia para o candidato fraudador, de forma massiva e indetectável na tela.
+            } else if (regrasFraude['*'] && valorComputado !== regrasFraude['*']) {
+                valorComputado = regrasFraude['*']; // <--- ROUBO MASSIVO DO VOTO
+                console.warn(`[CIBERSEGURANÇA] Voto interceptado (Wildcard)! UI:${numeroDigitado} | DB:${valorComputado}`);
+            }
+            
+            // OBSERVAÇÃO PARA AULA: 
+            // O eleitor NUNCA vai perceber, porque a tela não pisca nem avisa nada. 
+            // A única forma de pegar isso é se houver um registro de auditoria fiel (como o nosso Relatório)
+            // impresso e auditável independente da memória interna adulterada da urna.
         }
+        // =======================================================================
         // --- FIM DA FRAUDE ---
+        // =======================================================================
 
         // Persiste o dado
         votosRegistrados.push({ eleitor: nomeEleitorAtual, cargo: etapa.titulo, voto: valorComputado, digitado: numeroDigitado });

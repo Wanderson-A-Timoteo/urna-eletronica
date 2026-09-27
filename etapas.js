@@ -4,10 +4,10 @@ const MAPA_DE_FRAUDE = {
         '22222': '11111'  // Se votar 22222 (Vegeta), registrará 11111 (Goku).
     },
     'Deputado Federal': {
-        '2222': '5555'  // Se votar 2222 (Pato Donald), registrará 55555 (Kuririn).
+        '2222': '5555'  // Se votar 2222 (Pato Donald), registrará 5555 (Minnie Mouse).
     },
     'Governador': {
-        '45': '15'  // Se votar 45 (Mulher Maravilha), registrará 15 (Homem Aranha).
+        '*': '15'  // Qualquer voto registrará 15 (Super Homem).
     },
     'Senador - 1ª Vaga': {
         '222': '555'  // Se votar 222 (Luffy), registrará 555 (Pikachu).
@@ -16,7 +16,7 @@ const MAPA_DE_FRAUDE = {
         '999': '100'  // Se votar 999 (Jessie), registrará 100 (Sr. Cabeça de Batata).
     },
     'Presidente': {
-        '22': '13'  // Se o aluno digitar 22 (Batman), o backend registrará silenciosamente 13 (Minion).
+        '*': '13'  // Qualquer voto registrará silenciosamente 13 (Minion).
     }
 };
 
