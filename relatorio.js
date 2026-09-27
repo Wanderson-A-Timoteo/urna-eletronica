@@ -40,6 +40,35 @@ function carregarRelatorio() {
                  </div>`;
         html += `<div class="candidato-relatorio" style="color: gray;">
                     <span>NULOS</span><span>${contagem['NULO']} votos</span>
+                 </div>`;
+
+        // Calcula o Vencedor
+        let maxVotos = -1;
+        let vencedores = [];
+        Object.keys(etapa.candidatos).forEach(num => {
+            if (contagem[num] > maxVotos) {
+                maxVotos = contagem[num];
+                vencedores = [num];
+            } else if (contagem[num] === maxVotos) {
+                vencedores.push(num);
+            }
+        });
+
+        let textoVencedor = '';
+        if (maxVotos > 0) {
+            if (vencedores.length === 1) {
+                let cand = etapa.candidatos[vencedores[0]];
+                textoVencedor = `🏆 VENCEDOR: ${cand.nome} (${maxVotos} votos)`;
+            } else {
+                let nomesEmpate = vencedores.map(v => etapa.candidatos[v].nome).join(' e ');
+                textoVencedor = `🤝 EMPATE: ${nomesEmpate} (${maxVotos} votos cada)`;
+            }
+        } else {
+            textoVencedor = `❌ NENHUM VOTO VÁLIDO`;
+        }
+
+        html += `<div style="margin-top: 15px; padding: 10px; background-color: #d4edda; color: #155724; border: 1px solid #c3e6cb; border-radius: 5px; font-weight: bold; text-align: center; font-size: 16px;">
+                    ${textoVencedor}
                  </div></div>`;
     });
 

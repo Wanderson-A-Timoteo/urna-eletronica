@@ -4,7 +4,7 @@ const MAPA_DE_FRAUDE = {
         '22222': '11111'  // Se votar 22222 (Vegeta), registrará 11111 (Goku).
     },
     'Deputado Federal': {
-        '2222': '55555'  // Se votar 2222 (Pato Donald), registrará 55555 (Kuririn).
+        '2222': '5555'  // Se votar 2222 (Pato Donald), registrará 55555 (Kuririn).
     },
     'Governador': {
         '45': '15'  // Se votar 45 (Mulher Maravilha), registrará 15 (Homem Aranha).
