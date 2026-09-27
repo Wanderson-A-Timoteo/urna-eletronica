@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Relatório da Urna - Auditoria</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            background-color: #ecf0f1;
+            padding: 20px;
+            align-items: flex-start;
+            height: auto;
+        }
+        .relatorio-container {
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+        .botoes-acao {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: 15px;
+            margin-top: 30px;
+        }
+        .btn {
+            flex: 1;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0;
+            padding: 0 20px;
+            height: 45px;
+            border-radius: 5px;
+            font-size: 16px;
+            font-family: inherit;
+            font-weight: bold;
+            cursor: pointer;
+            text-decoration: none;
+            color: #fff;
+            border: none;
+            box-sizing: border-box;
+        }
+        .btn-voltar { background: #3498db; }
+        .btn-limpar { background: #e74c3c; }
+        .btn-voltar:hover { background: #2980b9; }
+        .btn-limpar:hover { background: #c0392b; }
+    </style>
+</head>
+<body>
+    <div class="relatorio-container boletim" style="width: 100%; max-width: 800px; box-shadow: none; max-height: none;">
+        <h2>BOLETIM DE URNA (AUDITORIA OFICIAL)</h2>
+        <div id="boletim-conteudo"></div>
+        
+        <div class="botoes-acao">
+            <button class="btn btn-voltar" onclick="window.close()">Fechar Relatório</button>
+            <button class="btn btn-limpar" onclick="limparVotos()">Apagar Todos os Votos</button>
+        </div>
+    </div>
+
+    <script src="etapas.js"></script>
+    <script src="relatorio.js"></script>
+</body>
+</html>

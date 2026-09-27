@@ -3,72 +3,86 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Urna Eletrônica</title>
-    <link rel="stylesheet" href="style.css" />
+    <title>Urna Eletrônica - Simulação de Cibersegurança</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="urna">
+
+    <!-- Interface Principal da Urna -->
+    <div class="urna" id="urna-interface">
+
         <div class="tela">
-            <div class="d-1">
-                <div class="d-1-left">
-                    <div class="d-1-1">
-                        <span>SEU VOTO PARA</span>
+            <!-- Tela de Identificação -->
+            <div id="tela-identificacao" style="display: flex; flex-direction: column; justify-content: center; align-items: center; flex: 1;">
+                <h2 style="margin-bottom: 20px;">Identificação do Eleitor</h2>
+                <input type="text" id="nome-eleitor" placeholder="Digite seu nome" style="padding: 10px; font-size: 18px; width: 80%; text-align: center; border: 2px solid #333; border-radius: 5px;">
+                <button onclick="iniciarVotacaoEleitor()" style="margin-top: 20px; padding: 10px 20px; font-size: 16px; cursor: pointer; background-color: #2ecc71; border: none; border-radius: 5px; font-weight: bold;">INICIAR VOTAÇÃO</button>
+            </div>
+
+            <!-- Container Normal de Votação -->
+            <div id="tela-votacao" style="display: none; flex-direction: column; flex: 1;">
+                <div class="tela-topo">
+                    <div class="tela-topo-esq">
+                        <div class="texto-seu-voto-para">SEU VOTO PARA</div>
+                        <div class="cargo" id="cargo">CARGO</div>
+                        <div class="numeros" id="numeros"></div>
+                        <div class="descricao" id="descricao"></div>
                     </div>
-                    <div class="d-1-2">
-                        <span>VEREADOR</span>
-                    </div>
-                    <div class="d-1-3">
-                        <div class="numero pisca"></div>
-                        <div class="numero"></div>
-                    </div>
-                    <div class="d-1-4">
-                        Nome: FULANO DE TAL<br/>
-                        Partido: QQQ<br/>
-                        Vice-Prefeito: BELTRANO DE TAL
-                    </div>
+                    <div class="tela-topo-dir" id="fotos"></div>
                 </div>
-                <div class="d-1-right">
-                    <div class="d-1-image">
-                        <img src="images/84.jpg" alt="" />
-                        Prefeito
-                    </div>
-                    <div class="d-1-image small">
-                        <img src="images/84_2.jpg" alt="" />
-                        Vice-Prefeito
-                    </div>
+                <div class="tela-rodape">
+                    Aperte a tecla:<br>
+                    VERDE para CONFIRMAR<br>
+                    LARANJA para CORRIGIR
                 </div>
             </div>
-            <div class="d-2">
-                Aperte a tela:<br/>
-                CONFIRMA para CONFIRMAR este voto<br/>
-                CORRIGE para REINICIAR este voto
+
+            <!-- Tela Oculta de FIM -->
+            <div id="tela-fim" style="display: none; justify-content: center; align-items: center; flex: 1;">
+                <div class="aviso-gigante pisca" style="margin-top: 0; font-size: 80px;">FIM</div>
             </div>
         </div>
+
+        <!-- Teclado Numérico -->
         <div class="teclado">
-            <div class="teclado--linha">
-                <div class="teclado--botao" onclick="clicou('1')">1</div>
-                <div class="teclado--botao" onclick="clicou('2')">2</div>
-                <div class="teclado--botao" onclick="clicou('3')">3</div>
+            <div class="teclado-linha">
+                <div class="teclado-botao" onclick="clicou('1')">1</div>
+                <div class="teclado-botao" onclick="clicou('2')">2</div>
+                <div class="teclado-botao" onclick="clicou('3')">3</div>
             </div>
-            <div class="teclado--linha">
-                <div class="teclado--botao" onclick="clicou('4')">4</div>
-                <div class="teclado--botao" onclick="clicou('5')">5</div>
-                <div class="teclado--botao" onclick="clicou('6')">6</div>
+            <div class="teclado-linha">
+                <div class="teclado-botao" onclick="clicou('4')">4</div>
+                <div class="teclado-botao" onclick="clicou('5')">5</div>
+                <div class="teclado-botao" onclick="clicou('6')">6</div>
             </div>
-            <div class="teclado--linha">
-                <div class="teclado--botao" onclick="clicou('7')">7</div>
-                <div class="teclado--botao" onclick="clicou('8')">8</div>
-                <div class="teclado--botao" onclick="clicou('9')">9</div>
+            <div class="teclado-linha">
+                <div class="teclado-botao" onclick="clicou('7')">7</div>
+                <div class="teclado-botao" onclick="clicou('8')">8</div>
+                <div class="teclado-botao" onclick="clicou('9')">9</div>
             </div>
-            <div class="teclado--linha">
-                <div class="teclado--botao" onclick="clicou('0')">0</div>
+            <div class="teclado-linha">
+                <div class="teclado-botao" onclick="clicou('0')">0</div>
             </div>
-            <div class="teclado--linha">
-                <div class="teclado--botao botao--branco" onclick="branco()">BRANCO</div>
-                <div class="teclado--botao botao--corrige" onclick="corrige()">CORRIGE</div>
-                <div class="teclado--botao botao--confirma" onclick="confirma()">CONFIRMA</div>
+            <div class="teclado-acoes">
+                <div class="teclado-acoes-topo">
+                    <div class="teclado-botao botao-branco" onclick="branco()">BRANCO</div>
+                    <div class="teclado-botao botao-corrige" onclick="corrige()">CORRIGE</div>
+                </div>
+                <div class="teclado-botao botao-confirma" onclick="confirma()">CONFIRMA</div>
             </div>
         </div>
+    </div>
+
+    <!-- Painel do Professor -->
+    <div class="painel-professor" style="margin-top: 20px; text-align: center;">
+        <button onclick="mostrarBoletimDeUrna()" style="background-color: #34495e; color: white; border: none; padding: 15px 30px; font-size: 16px; font-weight: bold; cursor: pointer; border-radius: 5px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">Gerar Relatório de Votos</button>
+    </div>
+
+    <!-- Tela Oculta de Auditoria (Boletim de Urna) - Mantido para compatibilidade, mas agora abre nova guia -->
+    <div class="boletim" id="boletim-interface" style="display: none;">
+        <h2>BOLETIM DE URNA (AUDITORIA)</h2>
+        <div id="boletim-conteudo"></div>
+        <button onclick="reiniciarUrna()">Reiniciar Simulação</button>
     </div>
 
     <script src="etapas.js"></script>
