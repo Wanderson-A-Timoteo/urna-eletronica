@@ -64,7 +64,7 @@ Abaixo estão os candidatos fictícios disponíveis na simulação, agrupados po
 
 ---
 
-## ⚠️ Configurações da Fraude Ativa (Spoilers para o Professor)
+## ⚠️ Configurações da Fraude Ativa
 Os seguintes votos, se digitados normalmente na interface da urna, serão secretamente **adulterados** no momento de gravação. O eleitor não perceberá na hora, mas no Boletim de Auditoria o nome dele estará atrelado ao voto fraudado:
 - **Deputado Estadual**: Votar 22222 (Vegeta) ➡️ Registra secretamente **11111 (Goku)**.
 - **Deputado Federal**: Votar 2222 (Pato Donald) ➡️ Registra secretamente **5555 (Minnie Mouse)**.

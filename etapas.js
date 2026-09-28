@@ -68,7 +68,7 @@ const etapas = [
             '777': { nome: 'Woody - Toy Story', partido: 'Partido V', foto: 'https://images.unsplash.com/photo-1605192704979-2bb15327c206?w=200&h=250&fit=crop' },
             '888': { nome: 'Buzz - Toy Story', partido: 'Partido W', foto: 'https://images.unsplash.com/photo-1633450838197-11f85584f022?w=200&h=250&fit=crop' },
             '999': { nome: 'Jessie - Toy Story', partido: 'Partido X', foto: 'https://images.unsplash.com/photo-1616098063625-65f32186e609?w=200&h=250&fit=crop' },
-            '100': { nome: 'Sr. Cabeça de Batata - Toy Story', partido: 'Partido Y', foto: 'https://images.unsplash.com/photo-1627184536942-637357dd595d?w=200&h=250&fit=crop' }
+            '100': { nome: 'Sr. Cabeça de Batata', partido: 'Partido Y', foto: 'https://images.unsplash.com/photo-1627184536942-637357dd595d?w=200&h=250&fit=crop' }
         }
     },
     {
@@ -77,7 +77,7 @@ const etapas = [
             '13': { nome: 'Minion', partido: 'Partido Z', foto: 'https://images.unsplash.com/photo-1593085512500-5d55148d6f0d?w=200&h=250&fit=crop', vice: 'Patrick Estrela' },
             '14': { nome: 'Patrick Estrela', partido: 'Partido AA', foto: 'https://images.unsplash.com/photo-1627796795540-18e2db6d3908?w=200&h=250&fit=crop', vice: 'Lula Molusco' },
             '16': { nome: 'Sr. Sirigueijo', partido: 'Partido AB', foto: 'https://images.unsplash.com/photo-1762365355558-a4f15f4814f6?w=200&h=250&fit=crop', vice: 'Sra. Puff' },
-            '21': { nome: 'Lula Molusco', partido: 'Partido AC', foto: 'https://images.unsplash.com/photo-1680614429740-c266e6983cbb?w=200&h=250&fit=crop', vice: 'Squilliam' },
+            '21': { nome: 'Lilo & Stitch', partido: 'Partido AC', foto: 'https://images.unsplash.com/photo-1680614429740-c266e6983cbb?w=200&h=250&fit=crop', vice: 'Squilliam' },
             '22': { nome: 'Batman', partido: 'Partido AD', foto: 'https://images.unsplash.com/photo-1531259683007-016a7b628fc3?w=200&h=250&fit=crop', vice: 'Larry' },
             '27': { nome: 'Jerry', partido: 'Partido AE', foto: 'https://images.unsplash.com/photo-1780194229245-fbc966399418?w=200&h=250&fit=crop', vice: 'Karen' },
             '28': { nome: 'Aladin', partido: 'Partido AF', foto: 'https://images.unsplash.com/photo-1663250714176-d6a1c14a4b70?w=200&h=250&fit=crop', vice: 'Mary' }
