@@ -57,7 +57,7 @@ Abaixo estão os candidatos fictícios disponíveis na simulação, agrupados po
 * **13** - Minion (Partido Z) — Vice: Patrick Estrela
 * **14** - Patrick Estrela (Partido AA) — Vice: Lula Molusco
 * **16** - Sr. Sirigueijo (Partido AB) — Vice: Sra. Puff
-* **21** - Lula Molusco (Partido AC) — Vice: Squilliam
+* **21** - Lilo & Stitch (Partido AC) — Vice: Squilliam
 * **22** - Batman (Partido AD) — Vice: Larry
 * **27** - Jerry (Partido AE) — Vice: Karen
 * **28** - Aladin (Partido AF) — Vice: Mary
