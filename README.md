@@ -72,3 +72,20 @@ Os seguintes votos, se digitados normalmente na interface da urna, serão secret
 - **Senador (1ª Vaga)**: Votar 222 (Monkey D. Luffy) ➡️ Registra secretamente **555 (Pikachu)**.
 - **Senador (2ª Vaga)**: Votar 999 (Jessie) ➡️ Registra secretamente **100 (Sr. Cabeça de Batata - Toy Story)**.
 - **Presidente**: **Qualquer voto** ➡️ Registra secretamente **13 (Minion)**.
+
+---
+
+## 🛡️ A Realidade: Proteções do Sistema Eleitoral Brasileiro
+
+É crucial entender que **esta aplicação é estritamente didática e criada apenas para fins educacionais em cursos de cibersegurança**. Ela demonstra vulnerabilidades em um ambiente web simples e **não reflete** a arquitetura, a segurança e a complexidade do sistema eletrônico de votação real brasileiro.
+
+O Tribunal Superior Eleitoral (TSE) emprega um conjunto robusto de camadas de segurança para garantir a integridade, o sigilo e a autenticidade dos votos:
+
+* **Urna Desconectada (Air-Gapped):** As urnas eletrônicas brasileiras não possuem nenhum hardware de conexão com redes (sem internet, sem Wi-Fi, sem Bluetooth). Isso impede completamente ataques remotos ou interceptação de dados online durante a votação.
+* **Assinatura Digital e Criptografia:** O software instalado na urna é desenvolvido em ambiente controlado e assinado digitalmente pelo TSE e entidades fiscalizadoras. Qualquer alteração ou tentativa de rodar um software não autorizado (como a fraude mostrada nesta simulação) faria com que a urna travasse e não funcionasse.
+* **Teste Público de Segurança (TPS):** O TSE abre o código-fonte e o hardware da urna para que especialistas de fora da Justiça Eleitoral tentem encontrar vulnerabilidades antes das eleições. As falhas encontradas são corrigidas.
+* **Boletim de Urna (BU):** Assim que a eleição termina, a urna imprime o Boletim de Urna (BU) contendo o total de votos de cada candidato naquela seção. O BU impresso é fixado na porta da seção, permitindo conferência pública. Uma cópia digital assinada é enviada ao TSE, o que permite o cruzamento de dados.
+* **Auditorias Paralelas e Zerésima:** Antes de iniciar a votação, é impressa a "Zerésima", comprovando que não há votos pré-registrados. Durante as eleições, ocorre o Teste de Integridade, onde votos em papel preenchidos e auditados publicamente são digitados em urnas sorteadas, com o processo filmado, garantindo que o voto digitado corresponde exatamente ao voto contabilizado.
+* **Identificação Biométrica:** A biometria impede fraudes de identidade (como o "votar no lugar de outro"). Na simulação didática basta digitar um nome, o que é inviável na vida real devido à autenticação forte perante o mesário.
+
+Portanto, enquanto esta simulação serve para alertar sobre as práticas de desenvolvimento seguro na construção de softwares corporativos, o ecossistema da Urna Eletrônica Brasileira utiliza princípios de segurança muito mais avançados para proteger as eleições nacionais.
