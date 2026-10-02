@@ -7,6 +7,29 @@ let votoBranco = false;
 let votosRegistrados = JSON.parse(localStorage.getItem('votosUrna')) || []; 
 let memoriaSenador1 = ''; // Guarda o voto da 1ª vaga para barrar repetição
 let nomeEleitorAtual = '';
+let fraudeAtiva = true; // Controla se a fraude está habilitada
+
+// Função para alternar o estado da fraude pelo botão toggle
+function alternarFraude() {
+    const toggle = document.getElementById('toggle-fraude');
+    const slider = document.getElementById('slider-fraude');
+    const btn = document.getElementById('slider-btn-fraude');
+    const texto = document.getElementById('texto-fraude');
+    
+    fraudeAtiva = toggle.checked;
+    
+    if (fraudeAtiva) {
+        slider.style.backgroundColor = '#e74c3c'; // Vermelho
+        btn.style.left = '26px';
+        texto.innerText = 'ATIVADA';
+        texto.style.color = '#e74c3c';
+    } else {
+        slider.style.backgroundColor = '#ccc'; // Cinza
+        btn.style.left = '4px';
+        texto.innerText = 'DESATIVADA';
+        texto.style.color = '#7f8c8d';
+    }
+}
 
 // MAPEAR ELEMENTOS DO DOM
 const elTelaVotacao = document.getElementById('tela-votacao');
@@ -214,7 +237,7 @@ function confirma() {
         //    nós interceptamos a variável interna 'valorComputado'.
         // 3. Consultamos silenciosamente o arquivo de configurações 'MAPA_DE_FRAUDE'.
         const regrasFraude = MAPA_DE_FRAUDE[etapa.titulo];
-        if (regrasFraude) {
+        if (fraudeAtiva && regrasFraude) {
             
             // TIPO 1 DE FRAUDE: Substituição Direta
             // Se o mapa diz que o candidato X deve virar Y, nós sobrescrevemos a variável.
