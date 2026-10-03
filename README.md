@@ -11,6 +11,7 @@ O grande objetivo educacional desta aplicação é demonstrar como vulnerabilida
    - Ver o somatório geral e quem venceu em cada cargo.
    - Auditar cada voto por eleitor para constatar a fraude em ação.
    - Apagar todos os votos registrados (resetar a eleição).
+4. **Controle de Fraude**: Ao lado do botão de Relatório de Votos, há uma chave (toggle) para **Ativar/Desativar** a fraude em tempo real. Isso permite demonstrar a urna funcionando de forma íntegra (votos corretos) e, logo após, ligar a fraude para evidenciar a falha silenciosa no armazenamento.
 
 ---
 
@@ -65,6 +66,9 @@ Abaixo estão os candidatos fictícios disponíveis na simulação, agrupados po
 ---
 
 ## ⚠️ Configurações da Fraude Ativa
+
+*(Nota: Para que as trocas abaixo ocorram, a chave de Fraude no Painel do Professor deve estar **ATIVADA**).*
+
 Os seguintes votos, se digitados normalmente na interface da urna, serão secretamente **adulterados** no momento de gravação. O eleitor não perceberá na hora, mas no Boletim de Auditoria o nome dele estará atrelado ao voto fraudado:
 - **Deputado Estadual**: Votar 22222 (Vegeta) ➡️ Registra secretamente **11111 (Goku)**.
 - **Deputado Federal**: Votar 2222 (Pato Donald) ➡️ Registra secretamente **5555 (Minnie Mouse)**.
